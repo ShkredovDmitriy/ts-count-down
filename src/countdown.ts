@@ -4,9 +4,9 @@ export function setupCountdown(wrapper: HTMLElement | null, endTime: number) {
     const diff = Math.ceil((endTime - currTime) / 1000);
     if (wrapper && diff >= 0) {
       wrapper.innerHTML = "";
-      addElement(wrapper, Math.floor(diff / 86400));
-      addElement(wrapper, Math.floor((diff % 86400) / 3600));
-      addElement(wrapper, Math.floor((diff % 3600) / 60));
+      addElement(wrapper, Math.floor(diff / (60 * 60 * 24)));
+      addElement(wrapper, Math.floor((diff % (60 * 60 * 24)) / (60 * 60)));
+      addElement(wrapper, Math.floor((diff % (60 * 60)) / 60));
       addElement(wrapper, Math.floor(diff % 60));
       setTimeout(() => tick(), 1000);
     }
